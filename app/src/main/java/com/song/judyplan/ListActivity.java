@@ -15,7 +15,5 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
         mRvList = (RecyclerView) findViewById(R.id.rv_list);
         mFabAdd = (FloatingActionButton) findViewById(R.id.fab_add);
-
-
     }
 }
