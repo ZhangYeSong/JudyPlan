@@ -21,9 +21,8 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
     private Context mContext;
     private List<Plan> mPlanList;
 
-    public PlanAdapter(Context context, List<Plan> planList) {
+    public PlanAdapter(Context context) {
         mContext = context;
-        mPlanList = planList;
     }
 
     static class PlanViewHolder extends RecyclerView.ViewHolder {
@@ -46,13 +45,17 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
     @Override
     public void onBindViewHolder(PlanViewHolder holder, int position) {
         Plan plan = mPlanList.get(position);
-        holder.mCheckBox.setChecked(plan.isCompleted);
-        holder.mTextView.setText(plan.text);
+        holder.mCheckBox.setChecked(plan.getIsCompleted());
+        holder.mTextView.setText(plan.getText());
     }
 
     @Override
     public int getItemCount() {
-        return mPlanList.size();
+        return mPlanList == null ? 0 : mPlanList.size();
     }
 
+    public void setPlanList(List<Plan> planList) {
+        mPlanList = planList;
+        notifyDataSetChanged();
+    }
 }

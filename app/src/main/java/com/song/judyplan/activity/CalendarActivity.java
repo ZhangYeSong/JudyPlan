@@ -1,4 +1,4 @@
-package com.song.judyplan.activitie;
+package com.song.judyplan.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
