@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context="com.song.judyplan.activitie.ListActivity">
 
     <android.support.v7.widget.RecyclerView
@@ -19,6 +20,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
-        app:srcCompat="@android:drawable/ic_input_add"/>
+        android:clickable="true"
+        app:srcCompat="@mipmap/ic_add"
+        android:background="@color/accent"/>
 
 </RelativeLayout>
