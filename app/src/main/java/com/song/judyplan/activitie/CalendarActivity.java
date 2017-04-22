@@ -1,4 +1,4 @@
-package com.song.judyplan;
+package com.song.judyplan.activitie;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.CalendarView;
 import android.widget.Toast;
+
+import com.song.judyplan.R;
 
 /**
  *  An activity show calendar

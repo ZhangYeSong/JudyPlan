@@ -1,9 +1,11 @@
-package com.song.judyplan;
+package com.song.judyplan.activitie;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+
+import com.song.judyplan.R;
 
 public class ListActivity extends AppCompatActivity {
     private RecyclerView mRvList;
