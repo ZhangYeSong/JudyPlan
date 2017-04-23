@@ -15,7 +15,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89d5c20f-8ae2-4127-adee-c70ffa7188cd" name="Default" comment="删除idea文件">
+    <list default="true" id="89d5c20f-8ae2-4127-adee-c70ffa7188cd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JudyPlan.iws" />
@@ -2552,7 +2552,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492920054475</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="删除idea文件">
+      <created>1492933670241</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1492933670241</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
