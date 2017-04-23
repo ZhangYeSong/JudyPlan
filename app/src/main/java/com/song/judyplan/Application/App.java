@@ -1,4 +1,4 @@
-package com.song.judyplan;
+package com.song.judyplan.Application;
 
 import android.app.Application;
 

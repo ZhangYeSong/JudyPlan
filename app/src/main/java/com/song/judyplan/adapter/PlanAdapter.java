@@ -20,6 +20,7 @@ import java.util.List;
 public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder> {
     private Context mContext;
     private List<Plan> mPlanList;
+    private OnItemClickListener mOnItemClickListener;
 
     public PlanAdapter(Context context) {
         mContext = context;
@@ -44,9 +45,17 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
 
     @Override
     public void onBindViewHolder(PlanViewHolder holder, int position) {
-        Plan plan = mPlanList.get(position);
+        final Plan plan = mPlanList.get(position);
         holder.mCheckBox.setChecked(plan.getIsCompleted());
         holder.mTextView.setText(plan.getText());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onItemClick(plan);
+                }
+            }
+        });
     }
 
     @Override
@@ -58,4 +67,13 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
         mPlanList = planList;
         notifyDataSetChanged();
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(Plan plan);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
+
 }

@@ -3,7 +3,7 @@
           package="com.song.judyplan">
 
     <application
-        android:name="App"
+        android:name=".Application.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,7 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ListActivity">
+        <activity android:name=".activity.ListActivity"
+            android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".activity.EditActivity"
+            android:launchMode="singleTask">
         </activity>
     </application>
 

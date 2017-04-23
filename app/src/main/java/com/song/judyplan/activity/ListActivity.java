@@ -1,5 +1,6 @@
 package com.song.judyplan.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.song.judyplan.App;
+import com.song.judyplan.Application.App;
 import com.song.judyplan.R;
 import com.song.judyplan.adapter.PlanAdapter;
 import com.song.judyplan.entity.DaoSession;
@@ -18,7 +19,7 @@ import org.greenrobot.greendao.query.Query;
 
 import java.util.Date;
 
-public class ListActivity extends AppCompatActivity implements View.OnClickListener {
+public class ListActivity extends AppCompatActivity implements View.OnClickListener, PlanAdapter.OnItemClickListener {
     private RecyclerView mRvList;
     private FloatingActionButton mFabAdd;
     private PlanAdapter mPlanAdapter;
@@ -39,6 +40,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         mRvList.setAdapter(mPlanAdapter);
 
         mFabAdd.setOnClickListener(this);
+        mPlanAdapter.setOnItemClickListener(this);
     }
 
     @Override
@@ -73,5 +75,12 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onItemClick(Plan plan) {
+        Intent intent = new Intent(getApplicationContext(), EditActivity.class);
+        intent.putExtra("plan", plan);
+        startActivity(intent);
     }
 }
