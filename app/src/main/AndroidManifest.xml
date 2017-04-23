@@ -10,18 +10,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.CalendarActivity">
+        <activity android:name=".activity.ListActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ListActivity"
-            android:launchMode="singleTask">
+        <activity android:name=".activity.CalendarActivity"
+            android:launchMode="singleTop">
         </activity>
         <activity android:name=".activity.EditActivity"
-            android:launchMode="singleTask">
+            android:launchMode="singleTop">
         </activity>
     </application>
 
