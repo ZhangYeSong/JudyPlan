@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context="com.song.judyplan.activity.EditActivity">
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_kuang_light"
+        android:padding="10dp"
+        android:textColor="@color/primary_text"
+        android:textSize="20dp"
+        android:hint="计划标题"/>
+
+    <EditText
+        android:layout_below="@+id/et_title"
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="计划内容"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/primary_text"
+        android:textSize="20dp"
+        android:gravity="start"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        app:srcCompat="@mipmap/ic_add"
+        android:background="@color/accent"/>
+
+</RelativeLayout>

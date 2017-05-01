@@ -17,8 +17,6 @@ import com.song.judyplan.entity.PlanDao;
 
 import org.greenrobot.greendao.query.Query;
 
-import java.util.Date;
-
 public class ListActivity extends AppCompatActivity implements View.OnClickListener, PlanAdapter.OnItemClickListener {
     private RecyclerView mRvList;
     private FloatingActionButton mFabAdd;
@@ -59,12 +57,8 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void addPlan() {
-        Plan plan = new Plan();
-        plan.setIsCompleted(false);
-        plan.setText("测试计划");
-        plan.setDate(new Date());
-        mPlanDao.insert(plan);
-        updatePlanList();
+        Intent intent = new Intent(getApplicationContext(), EditActivity.class);
+        startActivity(intent);
     }
 
     private void updatePlanList() {
