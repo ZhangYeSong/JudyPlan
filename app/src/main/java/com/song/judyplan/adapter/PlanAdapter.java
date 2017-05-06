@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.song.judyplan.Application.App;
 import com.song.judyplan.R;
+import com.song.judyplan.entity.DaoSession;
 import com.song.judyplan.entity.Plan;
+import com.song.judyplan.entity.PlanDao;
 
 import java.util.List;
 
@@ -44,16 +47,28 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
     }
 
     @Override
-    public void onBindViewHolder(PlanViewHolder holder, int position) {
+    public void onBindViewHolder(final PlanViewHolder holder, int position) {
         final Plan plan = mPlanList.get(position);
+
         holder.mCheckBox.setChecked(plan.getIsCompleted());
         holder.mTextView.setText(plan.getText());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnItemClickListener != null) {
                     mOnItemClickListener.onItemClick(plan);
                 }
+            }
+        });
+
+        holder.mCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DaoSession daoSession = ((App) mContext).getDaoSession();
+                PlanDao planDao = daoSession.getPlanDao();
+                plan.setIsCompleted(holder.mCheckBox.isChecked());
+                planDao.update(plan);
             }
         });
     }

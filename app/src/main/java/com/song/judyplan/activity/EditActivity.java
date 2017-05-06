@@ -21,6 +21,9 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
     private PlanDao mPlanDao;
     private boolean isNewPlan = true;
     private Plan mPlan;
+    private int mYear;
+    private int mMonth;
+    private int mDayOfMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +52,12 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             }
         } else {
             isNewPlan = true;
+            Bundle bundle = getIntent().getExtras();
+            mYear = bundle.getInt("year");
+            mMonth = bundle.getInt("month");
+            mDayOfMonth = bundle.getInt("dayOfMonth");
         }
     }
-
 
     @Override
     public void onClick(View v) {
@@ -68,6 +74,9 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             plan.setText(title);
             plan.setContent(content);
             plan.setDate(new Date());
+            plan.setYear(mYear);
+            plan.setMonth(mMonth);
+            plan.setDayOfMonth(mDayOfMonth);
             mPlanDao.insert(plan);
         } else {
             mPlan.setText(title);

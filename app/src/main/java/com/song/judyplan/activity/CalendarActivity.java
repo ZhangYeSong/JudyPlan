@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.CalendarView;
-import android.widget.Toast;
 
 import com.song.judyplan.R;
 
@@ -26,8 +25,13 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView.
 
     @Override
     public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-        Toast.makeText(getApplicationContext(), year + "年" + (month + 1) + "月" + dayOfMonth + "日",
-                Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, ListActivity.class));
+        Intent intent = new Intent(this, ListActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("year", year);
+        bundle.putInt("month", month);
+        bundle.putInt("dayOfMonth", dayOfMonth);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        finish();
     }
 }

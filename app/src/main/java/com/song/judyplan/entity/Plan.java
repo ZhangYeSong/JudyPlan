@@ -23,14 +23,20 @@ public class Plan implements Parcelable {
     private String content;
     private boolean isCompleted;
     @NotNull private Date date;
-    @Generated(hash = 1665382446)
+    private int year;
+    private int month;
+    private int dayOfMonth;
+    @Generated(hash = 6791039)
     public Plan(Long id, @NotNull String text, String content, boolean isCompleted,
-            @NotNull Date date) {
+            @NotNull Date date, int year, int month, int dayOfMonth) {
         this.id = id;
         this.text = text;
         this.content = content;
         this.isCompleted = isCompleted;
         this.date = date;
+        this.year = year;
+        this.month = month;
+        this.dayOfMonth = dayOfMonth;
     }
     @Generated(hash = 592612124)
     public Plan() {
@@ -65,6 +71,24 @@ public class Plan implements Parcelable {
     public void setDate(Date date) {
         this.date = date;
     }
+    public int getYear() {
+        return this.year;
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public int getMonth() {
+        return this.month;
+    }
+    public void setMonth(int month) {
+        this.month = month;
+    }
+    public int getDayOfMonth() {
+        return this.dayOfMonth;
+    }
+    public void setDayOfMonth(int dayOfMonth) {
+        this.dayOfMonth = dayOfMonth;
+    }
 
     @Override
     public int describeContents() {
@@ -78,6 +102,9 @@ public class Plan implements Parcelable {
         dest.writeString(this.content);
         dest.writeByte(isCompleted ? (byte) 1 : (byte) 0);
         dest.writeLong(date != null ? date.getTime() : -1);
+        dest.writeInt(this.year);
+        dest.writeInt(this.month);
+        dest.writeInt(this.dayOfMonth);
     }
 
     private Plan(Parcel in) {
@@ -87,6 +114,9 @@ public class Plan implements Parcelable {
         this.isCompleted = in.readByte() != 0;
         long tmpDate = in.readLong();
         this.date = tmpDate == -1 ? null : new Date(tmpDate);
+        this.year = in.readInt();
+        this.month = in.readInt();
+        this.dayOfMonth = in.readInt();
     }
 
     public static final Parcelable.Creator<Plan> CREATOR = new Parcelable.Creator<Plan>() {
