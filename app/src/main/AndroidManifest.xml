@@ -10,18 +10,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ListActivity"
-            android:launchMode="singleTask">
+        <activity
+            android:name=".activity.ListActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/NoTitleTheme"
+            android:label="计划列表">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.CalendarActivity"
-            android:launchMode="singleTop">
+        <activity
+            android:name=".activity.CalendarActivity"
+            android:launchMode="singleTop"
+            android:label="日期选择">
         </activity>
-        <activity android:name=".activity.EditActivity"
-            android:launchMode="singleTop">
+        <activity
+            android:name=".activity.EditActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            android:label="编辑计划">
         </activity>
     </application>
 

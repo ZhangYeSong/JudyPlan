@@ -17,7 +17,7 @@ import java.util.Date;
 public class EditActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mEtTitle;
     private EditText mEtContent;
-    private FloatingActionButton mFabAdd;
+    private FloatingActionButton mFabSave;
     private PlanDao mPlanDao;
     private boolean isNewPlan = true;
     private Plan mPlan;
@@ -29,9 +29,9 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
         mEtTitle = (EditText) findViewById(R.id.et_title);
         mEtContent = (EditText) findViewById(R.id.et_content);
-        mFabAdd = (FloatingActionButton) findViewById(R.id.fab_add);
+        mFabSave = (FloatingActionButton) findViewById(R.id.fab_add);
 
-        mFabAdd.setOnClickListener(this);
+        mFabSave.setOnClickListener(this);
 
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
         mPlanDao = daoSession.getPlanDao();

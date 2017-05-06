@@ -28,7 +28,8 @@
         android:layout_marginTop="10dp"
         android:textColor="@color/primary_text"
         android:textSize="20dp"
-        android:gravity="start"/>
+        android:gravity="start"
+        android:background="@null"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_add"
@@ -37,7 +38,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
-        app:srcCompat="@mipmap/ic_add"
+        app:srcCompat="@mipmap/ic_save"
         android:background="@color/accent"/>
 
 </RelativeLayout>
