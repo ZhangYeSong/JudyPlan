@@ -128,4 +128,18 @@ public class Plan implements Parcelable {
             return new Plan[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Plan{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", content='" + content + '\'' +
+                ", isCompleted=" + isCompleted +
+                ", date=" + date +
+                ", year=" + year +
+                ", month=" + month +
+                ", dayOfMonth=" + dayOfMonth +
+                '}';
+    }
 }

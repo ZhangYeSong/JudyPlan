@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.song.judyplan.Application.App;
@@ -32,11 +33,15 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
     static class PlanViewHolder extends RecyclerView.ViewHolder {
         private final CheckBox mCheckBox;
         private final TextView mTextView;
+        private final LinearLayout mLeft;
+        private final LinearLayout mRight;
 
         public PlanViewHolder(View itemView) {
             super(itemView);
             mCheckBox = (CheckBox) itemView.findViewById(R.id.cb_completed);
             mTextView = (TextView) itemView.findViewById(R.id.tv_text);
+            mLeft = (LinearLayout) itemView.findViewById(R.id.item_left);
+            mRight = (LinearLayout) itemView.findViewById(R.id.item_right);
         }
     }
 
@@ -53,11 +58,19 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
         holder.mCheckBox.setChecked(plan.getIsCompleted());
         holder.mTextView.setText(plan.getText());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.mLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClick(plan);
+                    mOnItemClickListener.onLeftItemClick(plan);
+                }
+            }
+        });
+        holder.mRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mOnItemClickListener != null) {
+                    mOnItemClickListener.onRightItemClick(plan);
                 }
             }
         });
@@ -84,7 +97,8 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Plan plan);
+        void onLeftItemClick(Plan plan);
+        void onRightItemClick(Plan plan);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {

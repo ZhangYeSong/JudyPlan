@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -83,7 +82,6 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             mMonth = bundle.getInt("month");
             mDayOfMonth = bundle.getInt("dayOfMonth");
         }
-        Log.d("日期", mYear+":"+mMonth+":"+mDayOfMonth);
     }
 
     @Override
@@ -134,12 +132,6 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onItemClick(Plan plan) {
-        Intent intent = new Intent(getApplicationContext(), EditActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_date:
@@ -149,5 +141,17 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void onLeftItemClick(Plan plan) {
+        Intent intent = new Intent(getApplicationContext(), EditActivity.class);
+        intent.putExtra("plan", plan);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onRightItemClick(Plan plan) {
+
     }
 }

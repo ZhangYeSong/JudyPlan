@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="horizontal"
-              android:layout_marginTop="5dp"
-              android:layout_marginBottom="5dp"
-              android:background="@drawable/selector_kuang_primary"
-              android:padding="5dp">
+<com.song.judyplan.widget.SwipeDeleteItem
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
 
-    <CheckBox
-        android:id="@+id/cb_completed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"/>
-
-    <TextView
-        android:id="@+id/tv_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="10dp"
-        android:text="这是JudyPlan"
-        android:textColor="@color/primary_text"
-        android:textSize="20sp"/>
-</LinearLayout>
+    <include layout="@layout/list_item_left"/>
+    <include layout="@layout/list_item_right"/>
+</com.song.judyplan.widget.SwipeDeleteItem>
