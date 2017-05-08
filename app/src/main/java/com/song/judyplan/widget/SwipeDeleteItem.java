@@ -3,7 +3,6 @@ package com.song.judyplan.widget;
 import android.content.Context;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,8 +89,14 @@ public class SwipeDeleteItem extends ViewGroup {
 
             @Override
             public int getViewHorizontalDragRange(View child) {
-                return super.getViewHorizontalDragRange(child);
+                return mLeftView == child ? child.getWidth() : 0;
             }
+
+            @Override
+            public int getViewVerticalDragRange(View child) {
+                return mLeftView == child ? child.getWidth() : 0;
+            }
+
         });
     }
 
@@ -127,18 +132,6 @@ public class SwipeDeleteItem extends ViewGroup {
         if (SwipeDeleteItem != null && SwipeDeleteItem != this) {
             SwipeDeleteItem.close();
             return true;
-        }
-
-        switch (ev.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                Log.d("down","down");
-                return true;
-            /*case MotionEvent.ACTION_MOVE:
-                Log.d("move","move");
-                return true;
-            case MotionEvent.ACTION_UP:
-                Log.d("up","up");
-                return false;*/
         }
 
         return mViewDragHelper.shouldInterceptTouchEvent(ev);

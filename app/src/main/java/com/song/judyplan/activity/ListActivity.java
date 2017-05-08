@@ -119,6 +119,12 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+
+    private void deletePlan(Plan plan) {
+        mPlanDao.delete(plan);
+        updatePlanList();
+    }
+
     private void updatePlanList() {
         Query<Plan> planQuery = mPlanDao.queryBuilder().
                 where(PlanDao.Properties.DayOfMonth.eq(mDayOfMonth)).
@@ -152,6 +158,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onRightItemClick(Plan plan) {
-
+        deletePlan(plan);
     }
+
 }
