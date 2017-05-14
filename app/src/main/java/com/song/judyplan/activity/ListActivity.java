@@ -21,12 +21,15 @@ import com.song.judyplan.adapter.PlanAdapter;
 import com.song.judyplan.entity.DaoSession;
 import com.song.judyplan.entity.Plan;
 import com.song.judyplan.entity.PlanDao;
+import com.song.judyplan.utils.Constants;
 
 import org.greenrobot.greendao.query.Query;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import static com.song.judyplan.entity.PlanDao.Properties.Date;
+import static com.song.judyplan.entity.PlanDao.Properties.IsCompleted;
 
 public class ListActivity extends AppCompatActivity implements View.OnClickListener, PlanAdapter.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView mRvList;
@@ -39,6 +42,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     private int mYear;
     private int mMonth;
     private int mDayOfMonth;
+    private int mToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +58,14 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
 
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) {
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
+            if (mToken == Constants.token_date) {
+                actionBar.setTitle(mYear+"年"+mMonth+"月"+mDayOfMonth+"日");
+            } else {
+                actionBar.setTitle(Constants.titles[mToken]);
+            }
         }
 
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
@@ -69,18 +78,32 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         mFabAdd.setOnClickListener(this);
         mPlanAdapter.setOnItemClickListener(this);
         mNavigationView.setNavigationItemSelectedListener(this);
+
+        if (mToken == Constants.token_today || mToken == Constants.token_tomorrow) {
+            mFabAdd.setVisibility(View.VISIBLE);
+        } else {
+            mFabAdd.setVisibility(View.GONE);
+        }
     }
 
     private void initContent() {
-        Calendar calendar = Calendar.getInstance();
-        mYear = calendar.get(Calendar.YEAR);
-        mMonth = calendar.get(Calendar.MONTH);
-        mDayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        mToken = getIntent().getIntExtra("token", Constants.token_today);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey("year")) {
             mYear = bundle.getInt("year");
             mMonth = bundle.getInt("month");
             mDayOfMonth = bundle.getInt("dayOfMonth");
+        } else if (mToken == Constants.token_tomorrow) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date(new Date().getTime()+86400000));
+            mYear = calendar.get(Calendar.YEAR);
+            mMonth = calendar.get(Calendar.MONTH);
+            mDayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        } else {
+            Calendar calendar = Calendar.getInstance();
+            mYear = calendar.get(Calendar.YEAR);
+            mMonth = calendar.get(Calendar.MONTH);
+            mDayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
         }
     }
 
@@ -126,9 +149,38 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updatePlanList() {
-        Query<Plan> planQuery = mPlanDao.queryBuilder().
-                where(PlanDao.Properties.DayOfMonth.eq(mDayOfMonth)).
-                orderAsc(Date).build();
+        Query<Plan> planQuery;
+        switch (mToken) {
+            case Constants.token_month:
+                planQuery = mPlanDao.queryBuilder().
+                        where(PlanDao.Properties.Year.eq(mYear)).
+                        where(PlanDao.Properties.Month.eq(mMonth)).
+                        orderAsc(IsCompleted).
+                        orderAsc(Date).build();
+                break;
+
+            case Constants.token_completed:
+                planQuery = mPlanDao.queryBuilder().
+                        where(PlanDao.Properties.IsCompleted.eq(true)).
+                        orderAsc(IsCompleted).
+                        orderAsc(Date).build();
+                break;
+
+            case Constants.token_uncompleted:
+                planQuery = mPlanDao.queryBuilder().
+                        where(PlanDao.Properties.IsCompleted.eq(false)).
+                        orderAsc(IsCompleted).
+                        orderAsc(Date).build();
+                break;
+            default:
+                planQuery = mPlanDao.queryBuilder().
+                        where(PlanDao.Properties.Year.eq(mYear)).
+                        where(PlanDao.Properties.Month.eq(mMonth)).
+                        where(PlanDao.Properties.DayOfMonth.eq(mDayOfMonth)).
+                        orderAsc(Date).build();
+                break;
+        }
+
         mPlanAdapter.setPlanList(planQuery.list());
     }
 
@@ -142,6 +194,36 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()) {
             case R.id.nav_date:
                 Intent intent = new Intent(getApplicationContext(), CalendarActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.nav_today:
+                intent = new Intent(getApplicationContext(), ListActivity.class);
+                intent.putExtra("token", Constants.token_today);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.nav_tomorrow:
+                intent = new Intent(getApplicationContext(), ListActivity.class);
+                intent.putExtra("token", Constants.token_tomorrow);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.nav_month:
+                intent = new Intent(getApplicationContext(), ListActivity.class);
+                intent.putExtra("token", Constants.token_month);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.nav_completed:
+                intent = new Intent(getApplicationContext(), ListActivity.class);
+                intent.putExtra("token", Constants.token_completed);
+                startActivity(intent);
+                finish();
+                break;
+            case R.id.nav_uncompleted:
+                intent = new Intent(getApplicationContext(), ListActivity.class);
+                intent.putExtra("token", Constants.token_uncompleted);
                 startActivity(intent);
                 finish();
                 break;

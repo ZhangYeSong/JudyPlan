@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.CalendarView;
 
 import com.song.judyplan.R;
+import com.song.judyplan.utils.Constants;
 
 /**
  *  An activity show calendar
@@ -26,6 +27,7 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView.
     @Override
     public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
         Intent intent = new Intent(this, ListActivity.class);
+        intent.putExtra("token", Constants.token_date);
         Bundle bundle = new Bundle();
         bundle.putInt("year", year);
         bundle.putInt("month", month);

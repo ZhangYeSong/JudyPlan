@@ -5,16 +5,14 @@
     <application
         android:name=".Application.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.ListActivity"
-            android:launchMode="singleTask"
             android:theme="@style/NoTitleTheme"
-            android:label="计划列表">
+            android:label="小新计划">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
