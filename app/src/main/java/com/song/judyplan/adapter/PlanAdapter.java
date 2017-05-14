@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.song.judyplan.Application.App;
@@ -15,6 +16,7 @@ import com.song.judyplan.entity.DaoSession;
 import com.song.judyplan.entity.Plan;
 import com.song.judyplan.entity.PlanDao;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -33,15 +35,19 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
     static class PlanViewHolder extends RecyclerView.ViewHolder {
         private final CheckBox mCheckBox;
         private final TextView mTextView;
-        private final LinearLayout mLeft;
+        private final RelativeLayout mLeft;
         private final LinearLayout mRight;
+        private final TextView mTvDate;
+        private final TextView mTvTime;
 
         public PlanViewHolder(View itemView) {
             super(itemView);
             mCheckBox = (CheckBox) itemView.findViewById(R.id.cb_completed);
             mTextView = (TextView) itemView.findViewById(R.id.tv_text);
-            mLeft = (LinearLayout) itemView.findViewById(R.id.item_left);
+            mLeft = (RelativeLayout) itemView.findViewById(R.id.item_left);
             mRight = (LinearLayout) itemView.findViewById(R.id.item_right);
+            mTvDate = (TextView) itemView.findViewById(R.id.tv_date);
+            mTvTime = (TextView) itemView.findViewById(R.id.tv_time);
         }
     }
 
@@ -59,6 +65,11 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
                 :mContext.getResources().getDrawable(R.drawable.selector_yellow_primary));
         holder.mCheckBox.setChecked(plan.getIsCompleted());
         holder.mTextView.setText(plan.getText());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String[] split = sdf.format(plan.getDate()).split(" ");
+        holder.mTvDate.setText(split[0]);
+        holder.mTvTime.setText(split[1]);
 
         holder.mLeft.setOnClickListener(new View.OnClickListener() {
             @Override
