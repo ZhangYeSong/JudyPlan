@@ -5,10 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     tools:context="com.song.judyplan.activity.EditActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:background="@color/primary"/>
+
     <EditText
+        android:layout_margin="10dp"
         android:id="@+id/et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,9 +24,11 @@
         android:padding="10dp"
         android:textColor="@color/primary_text"
         android:textSize="20dp"
+        android:layout_below="@+id/tool_bar"
         android:hint="计划标题"/>
 
     <EditText
+        android:layout_margin="10dp"
         android:layout_below="@+id/et_title"
         android:id="@+id/et_content"
         android:layout_width="match_parent"

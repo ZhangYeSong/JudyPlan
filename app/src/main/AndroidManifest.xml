@@ -26,6 +26,7 @@
         <activity
             android:name=".activity.EditActivity"
             android:launchMode="singleTop"
+            android:theme="@style/NoTitleTheme"
             android:windowSoftInputMode="stateVisible|adjustResize"
             android:label="编辑计划">
         </activity>

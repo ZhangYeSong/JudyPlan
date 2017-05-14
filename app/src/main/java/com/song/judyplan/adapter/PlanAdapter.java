@@ -55,8 +55,8 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
     public void onBindViewHolder(final PlanViewHolder holder, int position) {
         final Plan plan = mPlanList.get(position);
         holder.mLeft.setBackground(plan.getIsCompleted()
-                ?mContext.getResources().getDrawable(R.drawable.selector_yellow_primary)
-                :mContext.getResources().getDrawable(R.drawable.selector_kuang_primary));
+                ?mContext.getResources().getDrawable(R.drawable.selector_kuang_primary)
+                :mContext.getResources().getDrawable(R.drawable.selector_yellow_primary));
         holder.mCheckBox.setChecked(plan.getIsCompleted());
         holder.mTextView.setText(plan.getText());
 

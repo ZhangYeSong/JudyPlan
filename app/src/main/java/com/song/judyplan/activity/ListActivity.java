@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.song.judyplan.Application.App;
 import com.song.judyplan.R;
@@ -43,6 +44,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     private int mMonth;
     private int mDayOfMonth;
     private int mToken;
+    private TextView mTvEmpty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         mToolbar = (Toolbar) findViewById(R.id.tool_bar);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mTvEmpty = (TextView) findViewById(R.id.tv_empty);
 
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -180,8 +183,14 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                         orderAsc(Date).build();
                 break;
         }
-
         mPlanAdapter.setPlanList(planQuery.list());
+        if (planQuery.list().size() == 0) {
+            mRvList.setVisibility(View.GONE);
+            mTvEmpty.setVisibility(View.VISIBLE);
+        } else {
+            mRvList.setVisibility(View.VISIBLE);
+            mTvEmpty.setVisibility(View.GONE);
+        }
     }
 
     @Override

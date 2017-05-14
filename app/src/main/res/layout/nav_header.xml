@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@color/primary">
+                android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/civ_portrait"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/back_mm"/>
-
-    <TextView
-        android:id="@+id/tv_nickname"
+        android:scaleType="fitXY"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/civ_portrait"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="吕石莹"
-        android:textColor="#fff"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:layout_height="220dp"
+        android:src="@mipmap/nav_head"/>
+
 </RelativeLayout>

@@ -15,9 +15,7 @@
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:background="@color/primary">
-
-        </android.support.v7.widget.Toolbar>
+            android:background="@color/primary"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_list"
@@ -25,6 +23,16 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/tool_bar"
             android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:text="今天还没有计划哦，\n快点来制定计划吧！"
+            android:visibility="gone"
+            android:layout_centerInParent="true"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_add"
@@ -42,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:itemBackground="?attr/selectableItemBackground"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"/>
 
