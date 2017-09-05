@@ -1,0 +1,57 @@
+<keymap version="1" name="Eclipse copy" parent="Eclipse">
+  <action id="DuplicatesForm.SendToLeft" />
+  <action id="FileChooser.GotoHome" />
+  <action id="FileStructurePopup">
+    <keyboard-shortcut first-keystroke="ctrl f3" />
+  </action>
+  <action id="GotoBookmark1" />
+  <action id="GotoFile" />
+  <action id="MoveLineDown">
+    <keyboard-shortcut first-keystroke="alt down" />
+  </action>
+  <action id="MoveLineUp">
+    <keyboard-shortcut first-keystroke="alt up" />
+  </action>
+  <action id="MoveStatementDown" />
+  <action id="MoveStatementUp" />
+  <action id="OverrideMethods">
+    <keyboard-shortcut first-keystroke="ctrl o" />
+  </action>
+  <action id="ParameterInfo">
+    <keyboard-shortcut first-keystroke="ctrl p" />
+  </action>
+  <action id="Print" />
+  <action id="ReformatCode">
+    <keyboard-shortcut first-keystroke="alt l" />
+  </action>
+  <action id="RenameElement">
+    <keyboard-shortcut first-keystroke="alt r" />
+  </action>
+  <action id="RenameFile">
+    <keyboard-shortcut first-keystroke="alt r" />
+  </action>
+  <action id="ReplaceInPath">
+    <keyboard-shortcut first-keystroke="shift ctrl r" />
+  </action>
+  <action id="ShowContent" />
+  <action id="ShowIntentionActions">
+    <keyboard-shortcut first-keystroke="alt enter" />
+    <keyboard-shortcut first-keystroke="ctrl 1" />
+  </action>
+  <action id="SwitchApply">
+    <keyboard-shortcut first-keystroke="shift alt enter" />
+  </action>
+  <action id="SwitchDown">
+    <keyboard-shortcut first-keystroke="shift alt down" />
+  </action>
+  <action id="SwitchLeft">
+    <keyboard-shortcut first-keystroke="shift alt left" />
+  </action>
+  <action id="SwitchRight">
+    <keyboard-shortcut first-keystroke="shift alt right" />
+  </action>
+  <action id="SwitchUp">
+    <keyboard-shortcut first-keystroke="shift alt up" />
+  </action>
+  <action id="Unwrap" />
+</keymap>
