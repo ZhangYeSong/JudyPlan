@@ -1,6 +1,7 @@
 package com.song.judyplan.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.song.judyplan.entity.PlanDao;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Judy on 2017/4/22.
@@ -40,25 +42,26 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
         private final TextView mTvDate;
         private final TextView mTvTime;
 
-        public PlanViewHolder(View itemView) {
+        private PlanViewHolder(View itemView) {
             super(itemView);
-            mCheckBox = (CheckBox) itemView.findViewById(R.id.cb_completed);
-            mTextView = (TextView) itemView.findViewById(R.id.tv_text);
-            mLeft = (RelativeLayout) itemView.findViewById(R.id.item_left);
-            mRight = (LinearLayout) itemView.findViewById(R.id.item_right);
-            mTvDate = (TextView) itemView.findViewById(R.id.tv_date);
-            mTvTime = (TextView) itemView.findViewById(R.id.tv_time);
+            mCheckBox = itemView.findViewById(R.id.cb_completed);
+            mTextView = itemView.findViewById(R.id.tv_text);
+            mLeft = itemView.findViewById(R.id.item_left);
+            mRight = itemView.findViewById(R.id.item_right);
+            mTvDate = itemView.findViewById(R.id.tv_date);
+            mTvTime = itemView.findViewById(R.id.tv_time);
         }
     }
 
+    @NonNull
     @Override
-    public PlanViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PlanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View inflate = LayoutInflater.from(mContext).inflate(R.layout.list_item_plan, parent, false);
         return new PlanViewHolder(inflate);
     }
 
     @Override
-    public void onBindViewHolder(final PlanViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PlanViewHolder holder, int position) {
         final Plan plan = mPlanList.get(position);
         holder.mLeft.setBackground(plan.getIsCompleted()
                 ?mContext.getResources().getDrawable(R.drawable.selector_kuang_primary)
@@ -66,7 +69,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.PlanViewHolder
         holder.mCheckBox.setChecked(plan.getIsCompleted());
         holder.mTextView.setText(plan.getText());
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
         String[] split = sdf.format(plan.getDate()).split(" ");
         holder.mTvDate.setText(split[0]);
         holder.mTvTime.setText(split[1]);

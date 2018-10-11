@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">JudyPlan</string>
+    <string name="no_plan_message">今天还没有计划哦， 快点来制定计划吧！</string>
+    <string name="empty_title_message">标题为空的计划不会被保存</string>
+    <string name="select_date">日期选择</string>
+    <string name="plan_today">今日计划</string>
+    <string name="plan_tomorrow">明日计划</string>
+    <string name="plan_month">本月计划</string>
+    <string name="plan_completed">已完成计划</string>
+    <string name="plan_no_completed">未完成计划</string>
 </resources>

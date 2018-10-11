@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<com.song.judyplan.widget.InterceptDrawerLayout
     android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="20sp"
-            android:text="今天还没有计划哦，\n快点来制定计划吧！"
+            android:text="@string/no_plan_message"
             android:visibility="gone"
             android:layout_centerInParent="true"/>
 
@@ -55,4 +55,4 @@
         app:menu="@menu/nav_menu"/>
 
 
-</android.support.v4.widget.DrawerLayout>
+</com.song.judyplan.widget.InterceptDrawerLayout>

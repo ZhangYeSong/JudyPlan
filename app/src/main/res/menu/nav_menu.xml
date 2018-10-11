@@ -4,26 +4,26 @@
         <item
             android:id="@+id/nav_date"
             android:icon="@mipmap/ic_date"
-            android:title="日期选择"/>
+            android:title="@string/select_date"/>
         <item
             android:id="@+id/nav_today"
             android:icon="@mipmap/ic_date"
-            android:title="今日计划"/>
+            android:title="@string/plan_today"/>
         <item
             android:id="@+id/nav_tomorrow"
             android:icon="@mipmap/ic_date"
-            android:title="明日计划"/>
+            android:title="@string/plan_tomorrow"/>
         <item
             android:id="@+id/nav_month"
             android:icon="@mipmap/ic_date"
-            android:title="本月计划"/>
+            android:title="@string/plan_month"/>
         <item
             android:id="@+id/nav_completed"
             android:icon="@mipmap/ic_date"
-            android:title="已完成计划"/>
+            android:title="@string/plan_completed"/>
         <item
             android:id="@+id/nav_uncompleted"
             android:icon="@mipmap/ic_date"
-            android:title="未完成计划"/>
+            android:title="@string/plan_no_completed"/>
     </group>
 </menu>

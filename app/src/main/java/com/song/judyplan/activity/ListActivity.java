@@ -52,12 +52,12 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_list);
         initContent();
 
-        mRvList = (RecyclerView) findViewById(R.id.rv_list);
-        mFabAdd = (FloatingActionButton) findViewById(R.id.fab_add);
-        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-        mTvEmpty = (TextView) findViewById(R.id.tv_empty);
+        mRvList = findViewById(R.id.rv_list);
+        mFabAdd = findViewById(R.id.fab_add);
+        mToolbar = findViewById(R.id.tool_bar);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mNavigationView = findViewById(R.id.nav_view);
+        mTvEmpty = findViewById(R.id.tv_empty);
 
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();

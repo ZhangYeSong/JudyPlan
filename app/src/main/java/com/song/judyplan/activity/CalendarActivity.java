@@ -20,7 +20,7 @@ public class CalendarActivity extends AppCompatActivity implements CalendarView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        mCalendar = (CalendarView) findViewById(R.id.calendar);
+        mCalendar = findViewById(R.id.calendar);
         mCalendar.setOnDateChangeListener(this);
     }
 

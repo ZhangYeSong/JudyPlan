@@ -38,10 +38,10 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
-        mEtTitle = (EditText) findViewById(R.id.et_title);
-        mEtContent = (EditText) findViewById(R.id.et_content);
-        mFabSave = (FloatingActionButton) findViewById(fab_add);
+        mToolbar = findViewById(R.id.tool_bar);
+        mEtTitle = findViewById(R.id.et_title);
+        mEtContent = findViewById(R.id.et_content);
+        mFabSave = findViewById(fab_add);
 
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -68,6 +68,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             isNewPlan = true;
             Bundle bundle = getIntent().getExtras();
+            assert bundle != null;
             mYear = bundle.getInt("year");
             mMonth = bundle.getInt("month");
             mDayOfMonth = bundle.getInt("dayOfMonth");
@@ -86,7 +87,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
     private void savePlan(String title, String content) {
         if (TextUtils.isEmpty(title)) {
             finish();
-            Toast.makeText(getApplicationContext(), "标题为空的计划不会被保存", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.empty_title_message, Toast.LENGTH_SHORT).show();
             return;
         }
         if (isNewPlan) {
