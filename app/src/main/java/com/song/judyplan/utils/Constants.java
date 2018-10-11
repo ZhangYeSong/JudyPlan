@@ -11,5 +11,4 @@ public interface Constants {
     int token_completed= 0x00000003;
     int token_uncompleted = 0x00000004;
     int token_date = 0x00000005;
-    String[] titles = {"今日计划","明日计划","本月计划","已完成计划","未完成计划"};
 }

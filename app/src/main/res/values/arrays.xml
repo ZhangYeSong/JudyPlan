@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="plan_type">
+        <item>@string/plan_today</item>
+        <item>@string/plan_tomorrow</item>
+        <item>@string/plan_month</item>
+        <item>@string/plan_completed</item>
+        <item>@string/plan_no_completed</item>
+    </string-array>
+
+    <string-array name="year_month_day">
+        <item>年</item>
+        <item>月</item>
+        <item>日</item>
+    </string-array>
+</resources>

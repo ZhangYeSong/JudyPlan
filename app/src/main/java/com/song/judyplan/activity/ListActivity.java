@@ -34,12 +34,9 @@ import static com.song.judyplan.entity.PlanDao.Properties.IsCompleted;
 
 public class ListActivity extends AppCompatActivity implements View.OnClickListener, PlanAdapter.OnItemClickListener, NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView mRvList;
-    private FloatingActionButton mFabAdd;
     private PlanAdapter mPlanAdapter;
     private PlanDao mPlanDao;
-    private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
-    private NavigationView mNavigationView;
     private int mYear;
     private int mMonth;
     private int mDayOfMonth;
@@ -53,21 +50,25 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         initContent();
 
         mRvList = findViewById(R.id.rv_list);
-        mFabAdd = findViewById(R.id.fab_add);
-        mToolbar = findViewById(R.id.tool_bar);
+        FloatingActionButton fabAdd = findViewById(R.id.fab_add);
+        Toolbar toolbar = findViewById(R.id.tool_bar);
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        mNavigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         mTvEmpty = findViewById(R.id.tv_empty);
 
-        setSupportActionBar(mToolbar);
+        String[] planType = getResources().getStringArray(R.array.plan_type);
+        String[] yearMonthDay = getResources().getStringArray(R.array.year_month_day);
+
+        setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
             if (mToken == Constants.token_date) {
-                actionBar.setTitle(mYear+"年"+mMonth+"月"+mDayOfMonth+"日");
+                actionBar.setTitle(mYear+ yearMonthDay[0]+mMonth+ yearMonthDay[1]+mDayOfMonth+
+                        yearMonthDay[2]);
             } else {
-                actionBar.setTitle(Constants.titles[mToken]);
+                actionBar.setTitle(planType[mToken]);
             }
         }
 
@@ -78,14 +79,14 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         mPlanAdapter = new PlanAdapter(getApplicationContext());
         mRvList.setAdapter(mPlanAdapter);
 
-        mFabAdd.setOnClickListener(this);
+        fabAdd.setOnClickListener(this);
         mPlanAdapter.setOnItemClickListener(this);
-        mNavigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
 
         if (mToken == Constants.token_today || mToken == Constants.token_tomorrow) {
-            mFabAdd.setVisibility(View.VISIBLE);
+            fabAdd.setVisibility(View.VISIBLE);
         } else {
-            mFabAdd.setVisibility(View.GONE);
+            fabAdd.setVisibility(View.GONE);
         }
     }
 
