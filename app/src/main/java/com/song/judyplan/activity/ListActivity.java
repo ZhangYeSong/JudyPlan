@@ -28,6 +28,7 @@ import org.greenrobot.greendao.query.Query;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static com.song.judyplan.entity.PlanDao.Properties.Date;
 import static com.song.judyplan.entity.PlanDao.Properties.IsCompleted;
@@ -42,6 +43,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     private int mDayOfMonth;
     private int mToken;
     private TextView mTvEmpty;
+    private TextView mToolBarSubTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,8 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         mRvList = findViewById(R.id.rv_list);
         FloatingActionButton fabAdd = findViewById(R.id.fab_add);
         Toolbar toolbar = findViewById(R.id.tool_bar);
+        TextView toolBarTitle = toolbar.findViewById(R.id.tl_title);
+        mToolBarSubTitle = toolbar.findViewById(R.id.tl_subtitle);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         mTvEmpty = findViewById(R.id.tv_empty);
@@ -65,10 +69,10 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
             if (mToken == Constants.token_date) {
-                actionBar.setTitle(mYear+ yearMonthDay[0]+mMonth+ yearMonthDay[1]+mDayOfMonth+
+                toolBarTitle.setText(mYear+ yearMonthDay[0]+mMonth+ yearMonthDay[1]+mDayOfMonth+
                         yearMonthDay[2]);
             } else {
-                actionBar.setTitle(planType[mToken]);
+                toolBarTitle.setText(planType[mToken]);
             }
         }
 
@@ -184,13 +188,17 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                         orderAsc(Date).build();
                 break;
         }
-        mPlanAdapter.setPlanList(planQuery.list());
-        if (planQuery.list().size() == 0) {
+        List<Plan> planList = planQuery.list();
+        mPlanAdapter.setPlanList(planList);
+        if (planList.size() == 0) {
             mRvList.setVisibility(View.GONE);
             mTvEmpty.setVisibility(View.VISIBLE);
+            mToolBarSubTitle.setVisibility(View.INVISIBLE);
         } else {
             mRvList.setVisibility(View.VISIBLE);
             mTvEmpty.setVisibility(View.GONE);
+            mToolBarSubTitle.setVisibility(View.VISIBLE);
+            mToolBarSubTitle.setText(String.valueOf(planList.size()));
         }
     }
 
